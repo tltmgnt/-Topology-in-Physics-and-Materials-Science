@@ -1,13 +1,13 @@
-"""Scoped synthetic domain adapter; no external execution."""
-import math
-
-def winding(t1,t2,n):
-    angles=[math.atan2(t2*math.sin(2*math.pi*i/n),t1+t2*math.cos(2*math.pi*i/n)) for i in range(n)]
-    return sum(math.atan2(math.sin(angles[(i+1)%n]-a),math.cos(angles[(i+1)%n]-a)) for i,a in enumerate(angles))/(2*math.pi)
+"""Scoped adapter for the existing domain analyzer, not external validation."""
+from materials_topology import build_report
+DATA={'schema_version': 1, 'model': 'ssh', 'label': 'Synthetic SSH reference', 'cells': 12, 'boundary': 'open', 'intracell': {'value': 0.4, 'unit': 'eV'}, 'intercell': {'value': 1.0, 'unit': 'eV'}}
+REQUIREMENTS={'schema_version': 1, 'expected_winding': 1, 'minimum_bulk_gap': {'value': 1, 'unit': 'eV'}, 'gap_tolerance': {'value': 1e-06, 'unit': 'eV'}, 'numerical_tolerance': {'value': 1e-10, 'unit': 'eV'}, 'near_zero_window': {'value': 0.01, 'unit': 'eV'}, 'minimum_boundary_weight': 0.8, 'minimum_boundary_candidates': 2, 'winding_samples': 256, 'reference_gap': {'value': {'value': 1.2, 'unit': 'eV'}, 'absolute_tolerance': {'value': 1e-10, 'unit': 'eV'}, 'source': 'synthetic:closed-form arithmetic', 'kind': 'synthetic'}}
 
 def check():
-    observed=[{'t1':t1,'t2':1,'winding_128':winding(t1,1,128),'winding_256':winding(t1,1,256)} for t1 in (0.5,2)]
-    passed=all(abs(r['winding_128']-expected)<1e-10 and abs(r['winding_256']-expected)<1e-10 for r,expected in zip(observed,(1,0)))
-    return {'domain':'physics-materials','statement':'The supplied gapped two-band SSH winding fixtures evaluate to 1 and 0 at two sampling resolutions.',
-            'passed':passed,'configuration':{'complex_curve':'t1 + t2 exp(ik)','parameters':[[0.5,1],[2,1]],'samples':[128,256]},
-            'observed':observed,'scope':'Synthetic mathematical band-model check; no real material validation or gapless-case claim'}
+    report=build_report(DATA,REQUIREMENTS)
+    passed=report['status']=='MODEL_CHECKS_PASSED' and report['bulk']['analytic_winding']==1 and not report['experimental_validation_established']
+    observed={k:v for k,v in report.items() if k not in ('bulk','finite')}
+    observed['bulk']={k:v for k,v in report['bulk'].items() if k!='bands'}
+    return {'domain':'physics','statement':'The supplied unit-aware synthetic SSH model passes its declared bulk and finite numerical requirements without establishing experimental validation.','passed':passed,
+            'configuration':{'input':DATA,'requirements':REQUIREMENTS},'observed':observed,
+            'scope':'Synthetic software/model requirements only; no independent scientific certification or execution authority'}

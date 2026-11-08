@@ -3,18 +3,20 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "researchos-physics"
+name = "materials-topology"
 version = "0.1.0"
-description = "Offline ResearchOS TECT research prototype for physics"
+description = "Unit-aware SSH bulk topology and finite-chain numerical research workflows"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
+dependencies = ["numpy>=1.26,<3"]
 
 [project.scripts]
 researchos = "researchos.__main__:main"
+materials-topology = "materials_topology.__main__:main"
 
 [tool.setuptools.packages.find]
-include = ["researchos*"]
+include = ["materials_topology*", "researchos*"]
 
 [tool.setuptools.package-data]
 researchos = ["*.json"]
