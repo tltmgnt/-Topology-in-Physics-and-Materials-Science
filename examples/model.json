@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "model": "ssh",
+  "label": "Synthetic SSH reference",
+  "cells": 12,
+  "boundary": "open",
+  "intracell": {
+    "value": 0.4,
+    "unit": "eV"
+  },
+  "intercell": {
+    "value": 1.0,
+    "unit": "eV"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "model": "ssh",
+  "label": "Synthetic trivial dimerization",
+  "cells": 12,
+  "boundary": "open",
+  "intracell": {
+    "value": 1.0,
+    "unit": "eV"
+  },
+  "intercell": {
+    "value": 0.4,
+    "unit": "eV"
+  }
+}
