@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "expected_winding": 1,
+  "minimum_bulk_gap": {
+    "value": 1,
+    "unit": "eV"
+  },
+  "gap_tolerance": {
+    "value": 1e-06,
+    "unit": "eV"
+  },
+  "numerical_tolerance": {
+    "value": 1e-10,
+    "unit": "eV"
+  },
+  "near_zero_window": {
+    "value": 0.01,
+    "unit": "eV"
+  },
+  "minimum_boundary_weight": 0.8,
+  "minimum_boundary_candidates": 2,
+  "winding_samples": 256,
+  "reference_gap": {
+    "value": {
+      "value": 1.2,
+      "unit": "eV"
+    },
+    "absolute_tolerance": {
+      "value": 1e-10,
+      "unit": "eV"
+    },
+    "source": "synthetic:closed-form arithmetic",
+    "kind": "synthetic"
+  }
+}

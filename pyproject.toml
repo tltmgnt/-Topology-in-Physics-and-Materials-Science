@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "materials-topology"
+version = "0.1.0"
+description = "Unit-aware SSH bulk topology and finite-chain numerical research workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = ["numpy>=1.26,<3"]
+
+[project.scripts]
+materials-topology = "materials_topology.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["materials_topology*"]

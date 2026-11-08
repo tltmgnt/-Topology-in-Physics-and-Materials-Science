@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "model": "ssh",
+  "label": "Synthetic periodic chain",
+  "cells": 12,
+  "boundary": "periodic",
+  "intracell": {
+    "value": 0.4,
+    "unit": "eV"
+  },
+  "intercell": {
+    "value": 1.0,
+    "unit": "eV"
+  }
+}

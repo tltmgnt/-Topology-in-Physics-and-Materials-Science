@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "model": "ssh",
+  "label": "Synthetic equivalent meV input",
+  "cells": 12,
+  "boundary": "open",
+  "intracell": {
+    "value": 400,
+    "unit": "meV"
+  },
+  "intercell": {
+    "value": 1000,
+    "unit": "meV"
+  }
+}
