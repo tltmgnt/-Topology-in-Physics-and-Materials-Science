@@ -1,5 +1,14 @@
 # Topology in Physics and Materials Science
 
+<!-- research-workbench:start -->
+## Research workbench
+
+[Open this repository's private workbench](https://tltmgnt-topology-in-physics-and-materials-science.troturn31.chatgpt.site) · [All repository workbenches](https://tltmgnt-research-workbenches.troturn31.chatgpt.site)
+
+The hosted interface requires ChatGPT sign-in and access to the private Site. It supports browser-local research records, evidence fingerprints and workspace export. It is a prototype: no live AI model or repository backend is connected, and it does not establish external validation.
+<!-- research-workbench:end -->
+
+
 An end-to-end **idealized SSH-chain research workflow** with explicit energy units,
 bulk winding and gap analysis, finite-chain spectra, numerical consistency checks,
 threshold-aware boundary-localization diagnostics and replayable offline reports.
