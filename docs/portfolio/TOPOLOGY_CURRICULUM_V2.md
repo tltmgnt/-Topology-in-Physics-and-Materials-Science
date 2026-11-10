@@ -1,6 +1,6 @@
 # Topology compatibility and curriculum v2 — -Topology-in-Physics-and-Materials-Science
 
-Version 2 adapts the explicit-molecular-graph teaching pattern to this repository's actual role. This is documentation and a learning/decision framework; it introduces no mathematical engine, runtime dependency or operational permission.
+The verified edition of version 2 adapts the explicit-molecular-graph teaching pattern to this repository's actual role. This edition adds executable learning checks and reviewed answer keys. It does not introduce a new topology engine or grant operational permission.
 
 ## Repository decision
 
@@ -40,40 +40,57 @@ Prerequisites: basic programming, sets, functions and graph vocabulary. Work in 
 | 5. Comparison | Justify mathematical necessity and cost. | Complete the six-criterion card for the existing approach and one proposed alternative; record unknowns honestly. | Evidence-backed recommendation with baseline and explicit veto conditions. |
 | 6. Reproduction | Communicate the bounded result. | Reproduce the capstone using existing offline fixtures and record software version, inputs, outputs and limitations. | Reviewable notebook or report distinguishing computation, replay, independent evaluation and authorization. |
 
-## Source-linked reading laboratory
+## Worked reasoning and source explanation
 
-The table is a guided selection of source lines, not an assertion that the whole repository is covered. Line numbers refer to the inspected source blob `6e95c8d6285a24a2bcbe416ed406733992f83fde` in [materials_topology/analysis.py](../../materials_topology/analysis.py). Recheck anchors after source changes.
+For v=.4 eV and w=1 eV, the fixed q(k)=v+w exp(ik) loop winds once and its bulk gap is 2|1−.4|=1.2 eV. Equal hopping magnitudes close the bulk gap, making winding unresolved in this engine. A short chain can retain bulk winding 1 yet have no modes meeting the chosen boundary-candidate thresholds. The numerical eigensolver, bulk invariant and experimental validity are three different conclusions.
 
-| Line | Statement | Learning check |
+Read the [inspected source](https://github.com/tltmgnt/-Topology-in-Physics-and-Materials-Science/blob/67a51c411cfda5fc4318af41124298a759afd4cd/materials_topology/analysis.py) alongside the [executable answer key](../../curriculum/lab.py). The source link is pinned to the inspected revision; the lab and any explicitly described fix are in this change.
+
+## Run the worked laboratory
+
+From the repository root, with Python 3.12 (the recorded local version is 3.12.14):
+
+```sh
+python curriculum/lab.py --verify
+```
+
+This lab uses the repository's NumPy dependency; the recorded local run used NumPy 2.3.5.
+
+The lab checks **7 explicit expectations** against existing repository functions. It prints a JSON case report and exits nonzero on a wrong result. `--verify` additionally compares the entire case report with [expected.json](../../curriculum/expected.json). Read the input and predict each result before opening the answer key. No API account, credentials, model download, trading action or equipment connection is needed.
+
+| Checkpoint | Expected answer |
+| --- | --- |
+| SSH winding in declared convention | `1` |
+| bulk gap: 2*abs(1-.4) eV | `1.2` |
+| finite boundary candidates | `2` |
+| reversed hopping regime | `0` |
+| gap closure stays unresolved | `null` |
+| short chain need not meet boundary threshold | `0` |
+| no established experimental validation | `false` |
+
+The comparisons above encode independently specified small examples and contract expectations; a passing answer key is not evidence of complete domain correctness. The original functions and their existing test suites remain the authority for broader supported contracts.
+
+## Learner tasks and assessment rubric
+
+1. Before running the lab, predict every expected answer and derive one numeric result or state transition by hand.
+2. Explain the worked reasoning above using the referenced source, including the rejected or counterexample case.
+3. Add a new valid example and a nearby failing example. Explain which assumption changes, then compare against the existing implementation. For concept/static labs, keep the result explicitly at that level.
+4. Complete the scorecard for a proposed extension and a simpler baseline. Leave measurements unknown until collected; a task that the baseline already solves is not evidence for additional topology.
+
+| Competency | Points | Full-credit evidence |
 | --- | --- | --- |
-| [16](../../materials_topology/analysis.py#L16) | `def runtime_info():` | State the input/output contract and trace one normal and one failing case. |
-| [17](../../materials_topology/analysis.py#L17) | `return {'python': platform.python_version(), 'numpy': np.__version__}` | Predict the returned value and distinguish a computed result from authorization. |
-| [20](../../materials_topology/analysis.py#L20) | `def canonical(value):` | State the input/output contract and trace one normal and one failing case. |
-| [21](../../materials_topology/analysis.py#L21) | `return (json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False) + '\n').encode()` | Predict the returned value and distinguish a computed result from authorization. |
-| [24](../../materials_topology/analysis.py#L24) | `def fingerprint(value):` | State the input/output contract and trace one normal and one failing case. |
-| [25](../../materials_topology/analysis.py#L25) | `return hashlib.sha256(canonical(value)).hexdigest()` | Explain the exact bytes bound by the digest and why hashing does not authenticate the source. |
-| [28](../../materials_topology/analysis.py#L28) | `def number(value):` | State the input/output contract and trace one normal and one failing case. |
-| [30](../../materials_topology/analysis.py#L30) | `return float(format(float(value), '.12g'))` | Predict the returned value and distinguish a computed result from authorization. |
-| [33](../../materials_topology/analysis.py#L33) | `def hamiltonian(model):` | State the input/output contract and trace one normal and one failing case. |
-| [42](../../materials_topology/analysis.py#L42) | `return matrix` | Predict the returned value and distinguish a computed result from authorization. |
-| [45](../../materials_topology/analysis.py#L45) | `def bulk(model, policy):` | State the input/output contract and trace one normal and one failing case. |
-| [62](../../materials_topology/analysis.py#L62) | `return {'gap_eV': number(gap), 'effective_resolution_eV': number(resolution),` | Predict the returned value and distinguish a computed result from authorization. |
-| [68](../../materials_topology/analysis.py#L68) | `def finite_chain(model, policy):` | State the input/output contract and trace one normal and one failing case. |
-| [73](../../materials_topology/analysis.py#L73) | `raise ValueError('finite-chain eigensolver did not converge') from error` | Construct the triggering input and explain why rejection preserves the contract. |
-| [75](../../materials_topology/analysis.py#L75) | `raise ValueError('eigensolver returned nonfinite values')` | Construct the triggering input and explain why rejection preserves the contract. |
-| [104](../../materials_topology/analysis.py#L104) | `return {'sites': len(matrix), 'boundary': model.boundary, 'modes': modes,` | Predict the returned value and distinguish a computed result from authorization. |
-| [110](../../materials_topology/analysis.py#L110) | `def build_report(data, requirements):` | State the input/output contract and trace one normal and one failing case. |
-| [143](../../materials_topology/analysis.py#L143) | `return {'schema_version': 1, 'engine_version': ENGINE_VERSION,` | Separate type, shape and value checks; test a missing field and an invalid value. |
-## Assessment and verification
+| Model and contract | 0–3 | Correct objects, relation direction, labels/units, input bounds and missingness. |
+| Derivation and trace | 0–3 | Hand derivation agrees with the specified fixture; source steps explain why. |
+| Counterexample | 0–3 | New failing/boundary case has a justified expected result; rejection is not suppressed. |
+| Scope and necessity | 0–3 | Distinguishes software behavior from validation and compares an explicit simpler alternative. |
 
-A learner must explain the model, trace the capstone, identify a counterexample and state the scope boundary. Assess these four competencies equally; a numerical score cannot compensate for an unsupported scientific or operational claim.
+Completion requires at least 10/12 and no zero in scope/necessity. A runnable answer key alone is not evidence that a learner achieved this competency. No learner-outcome study has been performed.
 
-Relevant existing checks:
+## Verification evidence and maintenance
 
-- [tests/test_materials.py](../../tests/test_materials.py)
-- [tests/test_researchos.py](../../tests/test_researchos.py)
+[VALIDATION.json](../../curriculum/VALIDATION.json) records the inspected base revision, local Python version, source/fixture hashes, lab/answer hashes, case count and exit codes. All cases were executed locally. An in-memory copy with a deliberately wrong comparison was also executed and returned nonzero, checking that the grading failure path is active. Those injected failures are harness checks, not scientific adversarial evaluations.
 
-Follow [README](../../README.md) for environment and installed-package instructions. Read scripts before execution; source-reading exercises do not authorize provider calls, model downloads, live orders, hardware actions or messages. Synthetic fixtures establish software behavior only. This documentation change does not report those exercises as already executed.
+The dedicated [curriculum workflow](../../.github/workflows/curriculum.yml) runs the same `--verify` command on relevant pull-request changes. CI status is reported by GitHub; the local record does not assert that remote CI passed. Existing full-suite and installed-package requirements still apply to runtime changes. When source or fixture semantics change, inspect the diff and rederive answers before updating expected.json. Never regenerate expected answers solely to silence a failure. Refresh the local validation record after an actual run; do not rewrite its recorded base revision as if a new run occurred.
 
 ## Interoperability and adoption gate
 

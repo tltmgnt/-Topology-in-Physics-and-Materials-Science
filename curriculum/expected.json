@@ -1,0 +1,50 @@
+{
+  "case_count": 7,
+  "cases": [
+    {
+      "actual": 1,
+      "case": "SSH winding in declared convention",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "actual": 1.2,
+      "case": "bulk gap: 2*abs(1-.4) eV",
+      "expected": 1.2,
+      "passed": true
+    },
+    {
+      "actual": 2,
+      "case": "finite boundary candidates",
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "case": "reversed hopping regime",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "actual": null,
+      "case": "gap closure stays unresolved",
+      "expected": null,
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "case": "short chain need not meet boundary threshold",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "actual": false,
+      "case": "no established experimental validation",
+      "expected": false,
+      "passed": true
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Synthetic curriculum checks only",
+  "status": "PASS"
+}
