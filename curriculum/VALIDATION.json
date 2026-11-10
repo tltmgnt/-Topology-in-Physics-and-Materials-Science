@@ -1,0 +1,30 @@
+{
+  "case_count": 7,
+  "command": "python curriculum/lab.py --verify",
+  "exit_code": 0,
+  "expected_sha256": "a2fe8aab158cc03111b45f50a762abdba1018cf376e8c57a970e2a4df7ea0fec",
+  "lab_sha256": "398c85d5b10c68b7c2c39ae71cd4b9cefbd3de7834090dc810ee492fe21fd6f1",
+  "numpy": "2.3.5",
+  "python": "3.12.14",
+  "repository": "tltmgnt/-Topology-in-Physics-and-Materials-Science",
+  "schema_version": 1,
+  "scope": "Local synthetic curriculum validation on the recorded source snapshot; not complete repository CI, learning outcomes, independent scientific reproduction or deployment approval",
+  "source_and_fixture_sha256": {
+    "examples/critical.json": "f9d9b9eb47c3a929d23cdc624142296133396ae93c653c1344b441581a951c0a",
+    "examples/mev.json": "5394570bf3aca8e698cd1e60f8ddc717b31f85b93287801ab296f6124448adc0",
+    "examples/model.json": "adbe9218d4a514c69fb8d7de9ce9e049f3d4e014e8784c96a4f9504c3167364a",
+    "examples/periodic-requirements.json": "75a7122f0a7e376380863a9fb5a02b1d6c69ce6e83cd97a345c43da25ca42ea2",
+    "examples/periodic.json": "436069519c76f798845260ad6a1b8c4ca4f34a72e53c3dde271ae3685841341f",
+    "examples/requirements.json": "f2456c154e6455bdeb3b5704c0104ae92c0a46b84fde2b081e23e26d5d71e6fc",
+    "examples/short.json": "da81a53d9cfa508515224887f5ee30bd62f9a608e5aef1f62b3cf791ff0e99bd",
+    "examples/trivial.json": "5049da9c7ee96794fa9fd0df5e0b765014d8ff09ebd590a0ba4edaa32bb99a23",
+    "materials_topology/__init__.py": "951d82fefc36aae9941114487c267bda7bfaf0d820f8b27f48416eae290868e8",
+    "materials_topology/__main__.py": "513b01efd2566648eabdb85489a0a7715e337305249d0a32c91f93e104ac618b",
+    "materials_topology/analysis.py": "0b7e9aafa3480eb77183e0e72ff8ab72d7b0ea6c8f51d725e29249c1ee9e6760",
+    "materials_topology/io.py": "49930bc81fcfffccbb474fd65d8a81a14735b2ab1d9abef7d527a760cd25991a",
+    "materials_topology/model.py": "64f33f841ce16baf1e79a10165732098153bf82aa0aa9d81dbfc0cdb24622438",
+    "materials_topology/render.py": "fb2864616510b65c89de14cdc4ac9429ada0ca0ae036ec355a2ddad070684d46"
+  },
+  "source_base_commit": "67a51c411cfda5fc4318af41124298a759afd4cd",
+  "wrong_expectation_exit_code": 1
+}
